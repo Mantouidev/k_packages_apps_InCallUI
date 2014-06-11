@@ -434,7 +434,10 @@ public class ContactInfoCache implements ContactsAsyncHelper.OnImageLoadComplete
                     displayName = info.name;
                     displayNumber = number;
                     displayLocation = info.geoDescription;
-                    label = info.phoneLabel + " " + displayLocation;
+                    if (displayLocation == null)
+                        label = info.phoneLabel;
+                    else
+                        label = info.phoneLabel + " " + displayLocation;
                     Log.d(TAG, "  ==>  name is present in CallerInfo: displayName '" + displayName
                             + "', displayNumber '" + displayNumber + "', displayLocation '" + displayLocation + "'");
                 }
